@@ -1,0 +1,233 @@
+{% extends "header.html" %}
+{% block body %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css') }}">
+
+<!--<div class="wrapper">-->
+  <!--<div class="img1">-->
+
+      <!--<a href="#"><img class="imgModal" class="pic1" src='' id="pic1" onclick="openModal();currentSlide(1)"></a>-->
+
+  <!--</div>-->
+<!--</div>-->
+<!--<div class="wrapper">-->
+<!--<img src="{{ url_for('static', filename='arr1.jpg') }}" class="arr">-->
+<!--</div>-->
+<!--<div class="wrapper">-->
+  <!--<div class="img2">-->
+      <!--<a href="#"><img src="{{ url_for('static', filename='pic2.jpg') }}" class="pic2" onclick="openModal();currentSlide(6)"></a>-->
+  <!--</div>-->
+<!--</div>-->
+<style>
+
+  button{
+    padding:10px !important;
+    border:none !important;
+    background:#0f97b5 !important;
+  }
+
+  .displayImage{
+    width:90%;
+
+  }
+  .imageBox
+  {
+    padding-top: 1.5vw;
+    padding-bottom: 1.5vw;
+    background-color: #9ec8ed;
+    border: 2px solid black;
+  }
+  .imageDescription
+  {
+    font-size: 16px;
+    font-family: typewriter;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+  .mainButtons
+  {
+    background-color: #218eee !important;
+    font-family: typewriter;
+    font-weight: 600;
+    margin-top: 1vh;
+    font-size: 14px;
+    color:white !important;
+    transition-duration: 500ms;
+    cursor: pointer;
+  }
+  .mainButtons:hover
+  {
+    color:#218eee !important;
+    background-color: white !important;
+  }
+  #myModal
+  {
+    padding-top: 5vh;
+  }
+  .modal-content
+  {
+    height:90vh;
+    width:50vw;    
+    background-color: #9ec8ed;
+  }
+  .images
+  {
+    height:75vh;
+  }
+</style>
+<div class="container" style="padding-top: 5vh;">
+  <div class="row justify-content-md-center">
+    <div class="col-md-4" style="text-align: center;">
+      <div class="row imageBox">
+        <a href="#"><img class="displayImage" src="{{ url_for('static', filename=details.img1) }}" id="pic1" onclick="openModal();currentSlide(1)"></a>
+      </div>
+      <div class="row" style="text-align:center;"><div class="col imageDescription">ORIGINAL PRESCRIPTION</div></div>
+    </div>
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-4" style="text-align: center;">
+      <div class="row imageBox">
+        <a href="#" style="text-align:center;"><img class="displayImage" src="{{ url_for('static', filename=details.img6) }}" class="pic2" onclick="openModal();currentSlide(6)"></a>
+      </div>
+      <div class="row" style="text-align:center;"><div class="col imageDescription">DIGITALISED PRESCRIPTION</div></div>
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col-md-3" style="text-align: center;">
+      <button class="mainButtons modal_button btn-primary" onclick="openModal();currentSlide(1)">View Process</button>
+    </div>
+    <div class="col-md-3" style="text-align: center;">
+      <button class="mainButtons btn-primary" onclick="window.location.href='/'">Upload New</button>
+    </div>
+  </div>
+</div>
+<div id="myModal" class="modal">
+  <div class="modal-content">
+
+    <div class="mySlides">
+      <div class="numbertext">1 / 6</div>
+      <div class="images">
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <img class="imgModal" src="{{ url_for('static', filename=details.img1) }}">
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <div class="text">
+        <h3>Original Image</h3>
+        <p>This is the original image that has been scanned</p>
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">2 / 6</div>
+      <div class="images">
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <img class="imgModal" src="{{ url_for('static', filename=details.img2) }}">
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <div class="text">
+        <h3>Noise-free Image</h3>
+        <p>Noise from the image is removed by applying image processing using openCV</p>
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">3 / 6</div>
+      <div class="images">
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <img class="imgModal" src="{{ url_for('static', filename=details.img3) }}">
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <div class="text">
+        <h3>Segmented Image</h3>
+        <p>The different region of interests are identified</p>
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">4 / 6</div>
+      <div class="images">
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <img class="imgModal" src="{{ url_for('static', filename=details.img4) }}">
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <div class="text">
+        <h3>I.C.R.</h3>
+        <p>Intelligent Character Recognition where the characters and words are detected</p>
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">5 / 6</div>
+      <div class="images">
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <img class="imgModal" src="{{ url_for('static', filename=details.img5) }}">
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <div class="text">
+        <h3>Digitalised Image</h3>
+        <p>The handwritten image is now converted to digitalised text</p>
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">6 / 6</div>
+      <div class="images">
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <img class="imgModal" src="{{ url_for('static', filename=details.img6) }}">
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <div class="text">
+        <h3>Corrected Image</h3>
+        <p>The words detected in the previous step are now corrected using a medical dictionary</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function openModal() {
+  document.getElementById('myModal').style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById('myModal').style.display = "none";
+}
+
+$(document).click(function(event) {
+  //if you click on anything except the modal itself or the "open modal" link, close the modal
+  if (!$(event.target).closest(".mySlides,.displayImage,.mainButtons").length) {
+    closeModal();
+  }
+});
+
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = slides.length}
+  if (n < 1) {slideIndex = 1}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  //dots[slideIndex-1].className += " active";
+}
+</script>
+
+{% endblock %}
